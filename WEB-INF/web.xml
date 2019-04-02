@@ -1,0 +1,13 @@
+<web-app>
+	 <servlet>
+		<servlet-name>Regis</servlet-name>
+		<servlet-class>Regis</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Regis</servlet-name>
+		<url-pattern>/regis</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
