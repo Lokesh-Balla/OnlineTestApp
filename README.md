@@ -24,5 +24,5 @@ TODO List
  CSS3
  
  Servlets were not used because we couldnt get them to work properly. So we used jsp instead.
- Used JQuery where ever possible because its as many usefull builtins.
+ Used JQuery where ever possible because it has many usefull builtins.
  
