@@ -8,6 +8,8 @@ TODO List
  - page after login
  - implement session for logging into account
  - alert after succesfull registration
+ - change button color according to state of answers
+ - add feature of marking questions for review
  
  Things already implemented
  - Database connections(pull and push of data from JSP)
