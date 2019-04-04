@@ -19,11 +19,6 @@ try {
     ps.setString(4, phn);
     ps.setInt(5,1);
     ps.executeUpdate();
-%>
-
-<%
-    response.setAttribute("message","dfhdfh");
-    request.getRequestDispatcher("indextest.jsp").forward(request, response); 
 } catch (SQLException e) {
     e.printStackTrace();
 }

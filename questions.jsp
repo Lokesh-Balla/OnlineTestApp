@@ -20,7 +20,7 @@ try {
     Statement st=con.createStatement();
     ResultSet rs=st.executeQuery("select * from questions where qid in "+str);
 %>
-
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="screen" href="qmain.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
@@ -163,7 +163,7 @@ try {
               while(i<11){
                     rs=st.executeQuery("select * from questions where qid="+mylist.get(i));
                     rs.next();
-                    out.print("<div class='qblock' id='"+i+"' style='display:none;'><table><tr><th>"+rs.getString("ques")+"</th></tr>");
+                    out.print("<div class='qblock' id='"+i+"' style='display:none;'><table><tr><td>"+rs.getString("ques")+"</td></tr><tr class='blank_row'></tr>");
                     out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='1'/>"+rs.getString("op1")+"</td></tr>");
                     out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='2'/>"+rs.getString("op2")+"</td></tr>");
                     out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='3'/>"+rs.getString("op3")+"</td></tr>");
@@ -178,9 +178,12 @@ try {
             %>
         </form>
     <div class='botnav'>
-        <button id='prev'>prev</button>
-        <button id='next'>next</button>
-    <button id="sub">submit</button>
+        <button id='prev' class="nn"><span>Previous</span></button>
+        <button id='mark' class="nn"> Mark </button>
+        <button id='next' class="nn" ><span>Next</span></button>
+    </div>
+    <div class='bootnav'>
+    <button id="sub" class="nn1">submit</button>
     </div>
 </div>
 </body>   
