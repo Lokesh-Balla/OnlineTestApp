@@ -33,8 +33,7 @@ body
 } 
 .botnav
 {
-	margin-right: 10%;
-	float: right;
+	float: left;
     background-color: transparent;
     bottom: 5vh;
 }
@@ -53,6 +52,7 @@ body
     cursor: pointer;
 }
 .nn1{
+    float: right;
 	font-size: 17px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: bold;
@@ -64,9 +64,8 @@ body
     margin:0.25rem;
     min-height: 4rem;
     min-width:6rem;
- 	
     cursor: pointer;
-    margin-right: 35px;
+    margin-right: 10%;
 }
  button{
 
@@ -116,6 +115,7 @@ body
 }
 .nav
 {
+    font-family: 'Roboto', sans-serif;
     position:relative;
 	color:red;
     background: #123;
