@@ -1,6 +1,9 @@
 <%@ page import ="java.sql.*" %>
 <%@ page import ="javax.sql.*" %>
 <%@ page import ="java.io.*" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <%
 try {
     Class.forName("org.mariadb.jdbc.Driver");
@@ -16,8 +19,11 @@ try {
     ps.setString(4, phn);
     ps.setInt(5,1);
     ps.executeUpdate();
-    request.setAttribute("data", "changed");
-    request.getRequestDispatcher("index.html").forward(request, response);
+%>
+
+<%
+    response.setAttribute("message","dfhdfh");
+    request.getRequestDispatcher("indextest.jsp").forward(request, response); 
 } catch (SQLException e) {
     e.printStackTrace();
 }

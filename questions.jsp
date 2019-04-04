@@ -71,6 +71,7 @@ try {
         var Minutes = 60 * 60,
         display = document.querySelector('#time');
         $("#1").toggle();
+        $('#prev').prop('disabled', true);
         startTimer(Minutes, display);
     });
     $(document).ready(function(){
@@ -99,11 +100,23 @@ try {
             $('#'+curr).toggle();
             $('#'+curr).prev().toggle();
             curr=$('#'+curr).prev().attr('id');
+            if(curr=='1'){
+                $('#prev').prop('disabled', true);
+            }
+            if(curr!='10'){
+                $('#next').prop('disabled', false);
+            }
         });
         $('#next').click( function(){
             $('#'+curr).toggle();
             $('#'+curr).next().toggle();
             curr=$('#'+curr).next().attr('id');
+            if(curr!='1'){
+                $('#prev').prop('disabled', false);
+            }
+            if(curr=='10'){
+                $('#next').prop('disabled', true);
+            }
         });
 
         //left panel buttons
@@ -111,6 +124,19 @@ try {
             $('#'+curr).toggle();
             $('#'+$(this).val()).toggle();
             curr=$(this).val();
+            if(curr=='1'){
+               $('#prev').prop('disabled', true);
+               $('#next').prop('disabled', false);
+            }
+            else if(curr=="10")
+            {
+               $('#next').prop('disabled', true);
+               $('#prev').prop('disabled', false);
+            }
+            else{
+              $('#next').prop('disabled', false);
+              $('#prev').prop('disabled', false);  
+            }
         });
     });
 </script>
@@ -131,16 +157,18 @@ try {
         <button class="lpane" value='10'>10</button>
     </div>
     <div class='container'>
-        <form name="ques" method="POST" action="#">
+        <form name="ques" method="POST" action="eval.jsp">
               <% 
               int i=1;
-              while(rs.next()){
+              while(i<11){
+                    rs=st.executeQuery("select * from questions where qid="+mylist.get(i));
+                    rs.next();
                     out.print("<div class='qblock' id='"+i+"' style='display:none;'><table><tr><th>"+rs.getString("ques")+"</th></tr>");
                     out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='1'/>"+rs.getString("op1")+"</td></tr>");
-                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='1'/>"+rs.getString("op2")+"</td></tr>");
-                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='1'/>"+rs.getString("op3")+"</td></tr>");
-                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='1'/>"+rs.getString("op4")+"</td></tr>");
-                    out.print("</table></div>");
+                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='2'/>"+rs.getString("op2")+"</td></tr>");
+                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='3'/>"+rs.getString("op3")+"</td></tr>");
+                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='4'/>"+rs.getString("op4")+"</td></tr>");
+                    out.print("<input type='hidden' value='"+rs.getString("qid")+"' name='qid"+i+"'></table></div>");
                     i++;
               }
               %>  
@@ -149,7 +177,6 @@ try {
             }
             %>
         </form>
-    <div id="a"></div>
     <div class='botnav'>
         <button id='prev'>prev</button>
         <button id='next'>next</button>
