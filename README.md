@@ -1,17 +1,19 @@
 # OnlineTestApp
 
 TODO List
- - fix previous and next buttons in questions page
- - fix css file for questions page
+ - display all scores
  - possibility of options shuffle
- - marks evaluation
+ - upload scores to database
  - page after login
- - implement session for logging into account
- - alert after succesfull registration
  - change button color according to state of answers
- - add feature of marking questions for review
  
  Things already implemented
+ - add feature of marking questions for review
+ - alert after succesfull registration
+ - implement session for logging into account(partially)
+ - marks evaluation
+ - fix css file for questions page
+ - fix previous and next buttons in questions page
  - Database connections(pull and push of data from JSP)
  - Login and Sign Up page
  - css for login and sign up
