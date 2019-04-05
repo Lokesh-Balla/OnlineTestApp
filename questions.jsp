@@ -3,6 +3,12 @@
 <%@ page import ="java.io.*" %>
 <%@ page import ="java.util.*" %>
 <%
+//kicking out the user if has not logged in
+if(session.getAttribute("uid")==null){
+    response.sendRedirect("index.html");
+}
+%>
+<%
 ArrayList<Integer>  mylist = new ArrayList<Integer>();
 for(int i=1;i<=18;i++)
 {
@@ -77,8 +83,8 @@ try {
     $(document).ready(function(){
         $('#sub').click( function () {
             $.confirm({
-                title: 'Confirm!',
-                content: 'Simple confirm!',
+                title: 'Submit',
+                content: 'Are you sure that you want to submit?',
                 useBootstrap: false,
                 buttons: {
                     confirm: function () {
@@ -178,7 +184,7 @@ try {
             %>
         </form>
     <div class='botnav'>
-        <button id='prev' class="nn"><span>Previous</span></button>
+        <button id='prev' class="nn"><span>Prev</span></button>
         <button id='mark' class="nn"> Mark </button>
         <button id='next' class="nn" ><span>Next</span></button>
     </div>

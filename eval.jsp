@@ -3,6 +3,12 @@
 <%@ page import ="java.io.*" %>
 <%@ page import ="java.util.*" %>
 <%
+//kicking out the user if has not logged in
+if(session.getAttribute("uid")==null){
+    response.sendRedirect("index.html");
+}
+%>
+<%
 int no_ques=0,correct=0,i=0;
 try {
     Class.forName("org.mariadb.jdbc.Driver");
@@ -31,3 +37,4 @@ try {
 <tr><th>UserName</th><th>No of Questions Attempted</th><th>No of correct</th></tr>
 <tr><td>dummy</td><td><%out.print(no_ques);%></td><td><%out.print(correct);%></td></tr>
 </table>
+<a href="user.jsp">click here to go back to home page</a>

@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.topbar{
+    padding: 0.25%;
+    vertical-align: middle;
+    position: relative;
+    height: 6%;
+    width: 100%;
+    background-color: #000;
+}
+#userimg{
+    font-size: 35px;
+    color: white;
+}
+a{
+    font-size: 30px;    
+    text-decoration: none;
+    color: red;
+}
+#lbutton{
+    float: right;
+}
+.rest{
+    background: #000;
+}
