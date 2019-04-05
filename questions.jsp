@@ -4,9 +4,9 @@
 <%@ page import ="java.util.*" %>
 <%
 //kicking out the user if has not logged in
-if(session.getAttribute("uid")==null){
-    response.sendRedirect("index.jsp");
-}
+//if(session.getAttribute("uid")==null){
+//    response.sendRedirect("index.jsp");
+//}
 response.setHeader("Cache-Control","no-cache");
 response.setHeader("Cache-Control","no-store");
 response.setHeader("Pragma","no-cache");
@@ -37,6 +37,7 @@ try {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script >
     //GLOBAL VARIABLES
+    var arr = [0,0,0,0,0,0,0,0,0,0];
     var curr = '1';
     function submit()
     {
@@ -108,8 +109,19 @@ try {
 
         //for next and previous
         $('#prev').click( function(){
+            if(arr[curr-1]!=1){
+                $('#b'+curr).css("background-color","grey");
+            }else{
+                $('#b'+curr).css("background-color","#FF8000");
+            }
+            if(arr[curr-2]!=1){
+                $("#mark").text("mark");
+                 $("#mark").css("background-color","#FF8000");
+            }else{
+                $("#mark").text("unmark");
+                $("#mark").css("background-color","#FF0000");
+            }
             $('#'+curr).toggle();
-            $('#b'+curr).css("background-color","grey");
             $('#'+curr).prev().toggle();
             $('#b'+curr).prev().css("background-color","#008CBA");
             curr=$('#'+curr).prev().attr('id');
@@ -123,10 +135,12 @@ try {
 
         $("#mark").click(function(){
             if($("#mark").text()=="unmark"){
+                arr[curr-1]=0;
                 $("#b"+curr).css("background-color","grey");
                 $("#mark").text("mark");
                 $("#mark").css("background-color","#FF8000");
             }else{
+                arr[curr-1]=1;
                 $("#b"+curr).css("background-color","orange");
                 $("#mark").text("unmark");
                 $("#mark").css("background-color","#FF0000");
@@ -134,8 +148,19 @@ try {
         });
 
         $('#next').click( function(){
+            if(arr[curr-1]!=1){
+                $('#b'+curr).css("background-color","grey");
+            }else{
+                $('#b'+curr).css("background-color","#FF8000");
+            }
+            if(arr[curr]!=1){
+                $("#mark").text("mark");
+                $("#mark").css("background-color","#FF8000");
+            }else{
+                $("#mark").text("unmark");
+                $("#mark").css("background-color","#FF0000");
+            }
             $('#'+curr).toggle();
-            $('#b'+curr).css("background-color","grey");
             $('#'+curr).next().toggle();
             $('#b'+curr).next().css("background-color","#008CBA");
             curr=$('#'+curr).next().attr('id');
