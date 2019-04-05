@@ -12,7 +12,7 @@ try{
         response.sendRedirect("user.jsp");
     }else{
         out.print("Incorrect login details!");
-        response.sendRedirect("index.html");
+        response.sendRedirect("index.jsps");
     }
 }catch(SQLException e){
     e.printStackTrace();

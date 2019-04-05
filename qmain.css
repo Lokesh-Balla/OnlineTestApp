@@ -79,12 +79,12 @@ button{
 	background: #4CAF50;
 }
 #prev:hover {
-    background-color: white;
+    background-color: #00ff00;
     color: black;
     transition-duration: 0.4s;
 }
 #next:hover {
-    background-color: white;
+    background-color: #00ff00;
     color: black;
     transition-duration: 0.4s;
 }
@@ -94,7 +94,7 @@ button{
 	color: black;
 }
 #mark:hover {
-    background-color: white;
+    background-color: rgb(255, 153, 0);
     color: black;
     transition-duration: 0.4s;
 }
@@ -114,7 +114,7 @@ button{
     font-family: 'Roboto', sans-serif;
     position:relative;
 	color:red;
-    background: #123;
+    background: #000;
     height:10%;
     width: 100%;
 }

@@ -1,0 +1,75 @@
+body {
+	background: #f6f5f7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+  margin: -20px 0 50px;
+  background:url(https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-043.jpg);
+  background-repeat:no repeat;
+  background-size:100% 100%;
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 600px;
+	max-width: 100%;
+	min-height: 75px;
+}
+
+ table{
+    border-collapse: collapse;
+    width: 100%;
+    cursor:pointer;
+}
+
+th{
+  padding: 9px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  background: black;
+  color: white;
+  
+}
+
+td{
+    padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#f5f5f5;}
+
+.cl1{
+    float: left;
+    border-radius: 10px;
+    height:40px;
+    width: 200px;
+    cursor: pointer;
+    font-family: serif;
+    background: #fff;
+    font-weight: bold;
+      background: black;
+    color: white;
+    
+
+}
+
+.cl2{
+    float: right;
+    border-radius: 10px;
+    height:40px;
+    background: #fff;
+    width: 200px;
+    font-family: serif;
+    font-weight: bold;
+    cursor: pointer;
+    background: black;
+    color: white;
+}

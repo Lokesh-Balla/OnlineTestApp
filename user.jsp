@@ -2,8 +2,12 @@
 <%
 //kicking out the user if has not logged in
 if(session.getAttribute("uid")==null){
-    response.sendRedirect("index.html");
+    response.sendRedirect("index.jsp");
 }
+response.setHeader("Cache-Control","no-cache");
+response.setHeader("Cache-Control","no-store");
+response.setHeader("Pragma","no-cache");
+response.setDateHeader ("Expires", 0);
 %>
 
 <html lang="en">

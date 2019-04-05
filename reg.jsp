@@ -19,6 +19,8 @@ try {
     ps.setString(4, phn);
     ps.setInt(5,1);
     ps.executeUpdate();
+    session.setAttribute("message","<h1>congrats</h1><p>succesfullly registered</p><button class='button'>ok</button>");
+    request.getRequestDispatcher("index.jsp").forward(request, response); 
 } catch (SQLException e) {
     e.printStackTrace();
 }

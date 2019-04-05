@@ -5,9 +5,13 @@
 <%
 //kicking out the user if has not logged in
 if(session.getAttribute("uid")==null){
-    response.sendRedirect("index.html");
+    response.sendRedirect("index.jsp");
 }
-%>
+response.setHeader("Cache-Control","no-cache");
+response.setHeader("Cache-Control","no-store");
+response.setHeader("Pragma","no-cache");
+response.setDateHeader ("Expires", 0);
+%> 
 <%
 ArrayList<Integer>  mylist = new ArrayList<Integer>();
 for(int i=1;i<=18;i++)
@@ -27,7 +31,7 @@ try {
     ResultSet rs=st.executeQuery("select * from questions where qid in "+str);
 %>
 <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen" href="qmain.css">
+<link rel="stylesheet" type="text/css" media="screen" href="qmain.css?v2">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
@@ -79,6 +83,7 @@ try {
         $("#1").toggle();
         $('#prev').prop('disabled', true);
         startTimer(Minutes, display);
+        $('#b1').css("background-color","#008CBA");
     });
     $(document).ready(function(){
         $('#sub').click( function () {
@@ -104,7 +109,9 @@ try {
         //for next and previous
         $('#prev').click( function(){
             $('#'+curr).toggle();
+            $('#b'+curr).css("background-color","grey");
             $('#'+curr).prev().toggle();
+            $('#b'+curr).prev().css("background-color","#008CBA");
             curr=$('#'+curr).prev().attr('id');
             if(curr=='1'){
                 $('#prev').prop('disabled', true);
@@ -113,9 +120,24 @@ try {
                 $('#next').prop('disabled', false);
             }
         });
+
+        $("#mark").click(function(){
+            if($("#mark").text()=="unmark"){
+                $("#b"+curr).css("background-color","grey");
+                $("#mark").text("mark");
+                $("#mark").css("background-color","#FF8000");
+            }else{
+                $("#b"+curr).css("background-color","orange");
+                $("#mark").text("unmark");
+                $("#mark").css("background-color","#FF0000");
+            }
+        });
+
         $('#next').click( function(){
             $('#'+curr).toggle();
+            $('#b'+curr).css("background-color","grey");
             $('#'+curr).next().toggle();
+            $('#b'+curr).next().css("background-color","#008CBA");
             curr=$('#'+curr).next().attr('id');
             if(curr!='1'){
                 $('#prev').prop('disabled', false);
@@ -128,7 +150,9 @@ try {
         //left panel buttons
         $('.lpane').click(function(){
             $('#'+curr).toggle();
+            $('#b'+curr).css("background-color","grey");
             $('#'+$(this).val()).toggle();
+            $('#b'+$(this).val()).css("background-color","#008CBA");
             curr=$(this).val();
             if(curr=='1'){
                $('#prev').prop('disabled', true);
@@ -151,16 +175,16 @@ try {
         <span>Timer : </span><span id="time">00:00</span>
     </div>
     <div class='left'>
-        <button class="lpane" value='1'>1</button>
-        <button class="lpane" value='2'>2</button>
-        <button class="lpane" value='3'>3</button>
-        <button class="lpane" value='4'>4</button>
-        <button class="lpane" value='5'>5</button>
-        <button class="lpane" value='6'>6</button>
-        <button class="lpane" value='7'>7</button>
-        <button class="lpane" value='8'>8</button>
-        <button class="lpane" value='9'>9</button>
-        <button class="lpane" value='10'>10</button>
+        <button class="lpane" id="b1" value='1'>1</button>
+        <button class="lpane" id="b2" value='2'>2</button>
+        <button class="lpane" id="b3" value='3'>3</button>
+        <button class="lpane" id="b4" value='4'>4</button>
+        <button class="lpane" id="b5" value='5'>5</button>
+        <button class="lpane" id="b6" value='6'>6</button>
+        <button class="lpane" id="b7" value='7'>7</button>
+        <button class="lpane" id="b8" value='8'>8</button>
+        <button class="lpane" id="b9" value='9'>9</button>
+        <button class="lpane" id="b10" value='10'>10</button>
     </div>
     <div class='container'>
         <form name="ques" method="POST" action="eval.jsp">

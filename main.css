@@ -87,6 +87,39 @@ input{
     max-width: 50%;	
 	text-align: center;
 }
+#psudo-alert
+{
+	justify-content: center;
+	align-items: center;
+	background: #000;
+	color: #FFF;
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+		  0 10px 10px rgba(0,0,0,0.22);
+  	position: absolute;
+  	overflow: hidden;
+	max-width: 50%;
+  	padding: 2.5em;
+  	top:25%;
+	z-index: 3;
+	display: none;
+}
+#whiteb
+{
+	display: none;
+	position: absolute;
+	background-repeat: no-repeat; background-size: cover;
+	z-index: 2;
+	top: 0%;
+	background-position: 50% 50%;
+	margin: 0px;
+	min-width: 100%;
+	min-height: 100%;
+	background-color: #FFF;
+	opacity: 0.7;
+}
+
 #particles-js{
 	display: flex;
 	justify-content: center;
