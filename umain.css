@@ -78,6 +78,8 @@ ul{
 }
 #scores{
     left: 25%;
+    width: 90%;
+    height: 100%;
     position: absolute;
     z-index: -1;
 }
@@ -95,4 +97,27 @@ ul{
     border: none;
     border-radius: 20px;
     width: 90%;
+}
+#stab{
+    background-color: #eee;
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    margin: 5%;
+    width: 70%;
+    text-align: center;
+    border-collapse: collapse;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+}
+#stab th{
+    background-color: #000;
+    color: white;
+    font-size: 1.3em;
+}
+#tr{
+    border-radius: 0px 10px 0px 0px;
+}
+#tl{
+    border-radius: 10px 0px 0px 0px;
 }

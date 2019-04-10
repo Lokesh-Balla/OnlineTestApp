@@ -75,7 +75,7 @@ if(session.getAttribute("uid")!=null){
     </div>
     <div id='psudo-alert-false'>
         <h1>Sorry</h1>
-        <p>Given username and password already exists try new username or new password or both.</p>
+        <p>Given username already exists try a new username.</p>
         <button class='button' id='hide_alert_false'>ok</button>
     </div>
     <div id="whiteb"></div>

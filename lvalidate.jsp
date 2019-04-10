@@ -9,7 +9,6 @@ try{
     ResultSet rs=st.executeQuery("select uname,password from users where uname='"+request.getParameter("uid")+"' and password='"+request.getParameter("pwd")+"'");
     if(rs.next()){
         session.setAttribute("uid",rs.getString("uname"));
-        session.setAttribute("pass",rs.getString("password"));
         response.sendRedirect("user.jsp");
     }else{
         out.print("Incorrect login details!");

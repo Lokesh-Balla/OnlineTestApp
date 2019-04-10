@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<%@ page import ="java.sql.*" %>
+<%@ page import ="javax.sql.*" %>
+<%@ page import ="java.io.*" %>
+<%@ page import ="java.util.*" %>
 <%
 //kicking out the user if has not logged in
 if(session.getAttribute("uid")==null){
@@ -10,11 +14,20 @@ response.setHeader("Pragma","no-cache");
 response.setDateHeader ("Expires", 0);
 %>
 
+<%
+try{
+    Class.forName("org.mariadb.jdbc.Driver");
+    java.sql.Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/dxc","root","traceon");
+    Statement st=con.createStatement(); 
+    ResultSet rs=st.executeQuery("select * from score where uid='"+session.getAttribute("uid")+"'");
+%>
+
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>OnlineTestApp</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="umain.css?v1">
+    <link rel="stylesheet" type="text/css" media="screen" href="umain.css?v21312">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -72,8 +85,20 @@ response.setDateHeader ("Expires", 0);
         <div id="sub-container">test1<button id="t2">Start</button></div>
     </div>
     <div id="scores">
-        <h1>scores</h1>
+        <table id="stab">
+        <tr style="background-color:black;"><th id="tl">Test ID</th><th>Attempt Number</th><th id="tr">Score</th></tr>
+        <%
+        while(rs.next()){
+            out.print("<tr><td>"+rs.getString("testid")+"</td><td>"+rs.getString("attnum")+"</td><td>"+rs.getString("score")+"</td></tr>");
+        }
+        %>
+        </table>
     </div>
 </div>
 </body>
 </html>
+<%
+}catch(SQLException e){
+    e.printStackTrace();
+}
+%>
