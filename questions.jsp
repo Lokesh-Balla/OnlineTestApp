@@ -28,7 +28,7 @@ try {
     Class.forName("org.mariadb.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/dxc","root","traceon");
     Statement st=con.createStatement();
-    ResultSet rs=st.executeQuery("select * from questions where qid in "+str);
+    ResultSet rs;
 %>
 <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="screen" href="qmain.css?v2">
@@ -38,6 +38,7 @@ try {
 <script >
     //GLOBAL VARIABLES
     var arr = [0,0,0,0,0,0,0,0,0,0];
+    var arr_ans = [0,0,0,0,0,0,0,0,0,0];
     var curr = '1';
     function submit()
     {
@@ -110,20 +111,36 @@ try {
         //for next and previous
         $('#prev').click( function(){
             if(arr[curr-1]!=1){
-                $('#b'+curr).css("background-color","grey");
+                if(arr_ans[curr-1]!=1){
+                    $('#b'+curr).css("background-color","grey");
+                }
+                else{
+                    $('#b'+curr).css("background-color","green");
+                }
             }else{
                 $('#b'+curr).css("background-color","#FF8000");
             }
             if(arr[curr-2]!=1){
                 $("#mark").text("mark");
-                 $("#mark").css("background-color","#FF8000");
+                $("#mark").css("background-color","#FF8000");
             }else{
                 $("#mark").text("unmark");
                 $("#mark").css("background-color","#FF0000");
             }
             $('#'+curr).toggle();
             $('#'+curr).prev().toggle();
-            $('#b'+curr).prev().css("background-color","#008CBA");
+            if(arr[curr-2]!=1){
+                if(arr_ans[curr-2]!=1)
+                {
+                    $('#b'+curr).prev().css("background-color","#008CBA");
+                }
+                else{
+                    $('#b'+curr).prev().css("background-color","#00FF00");
+                }
+            }
+            else{
+                $('#b'+curr).prev().css("background-color","#ffda00");
+            }
             curr=$('#'+curr).prev().attr('id');
             if(curr=='1'){
                 $('#prev').prop('disabled', true);
@@ -136,12 +153,16 @@ try {
         $("#mark").click(function(){
             if($("#mark").text()=="unmark"){
                 arr[curr-1]=0;
-                $("#b"+curr).css("background-color","grey");
+                if(arr_ans[curr-1]!=1){
+                    $("#b"+curr).css("background-color","#008cba");
+                }else{
+                    $("#b"+curr).css("background-color","#00FF00");
+                }
                 $("#mark").text("mark");
                 $("#mark").css("background-color","#FF8000");
             }else{
                 arr[curr-1]=1;
-                $("#b"+curr).css("background-color","orange");
+                $("#b"+curr).css("background-color","ffda00");
                 $("#mark").text("unmark");
                 $("#mark").css("background-color","#FF0000");
             }
@@ -149,7 +170,12 @@ try {
 
         $('#next').click( function(){
             if(arr[curr-1]!=1){
-                $('#b'+curr).css("background-color","grey");
+                if(arr_ans[curr-1]!=1){
+                    $('#b'+curr).css("background-color","grey");
+                }
+                else{
+                    $('#b'+curr).css("background-color","green");
+                }
             }else{
                 $('#b'+curr).css("background-color","#FF8000");
             }
@@ -162,7 +188,18 @@ try {
             }
             $('#'+curr).toggle();
             $('#'+curr).next().toggle();
-            $('#b'+curr).next().css("background-color","#008CBA");
+            if(arr[curr]!=1){
+                if(arr_ans[curr]!=1)
+                {
+                    $('#b'+curr).next().css("background-color","#008CBA");
+                }
+                else{
+                    $('#b'+curr).next().css("background-color","#00ff00");
+                }
+            }
+            else{
+                $('#b'+curr).next().css("background-color","#ffda00");
+            }
             curr=$('#'+curr).next().attr('id');
             if(curr!='1'){
                 $('#prev').prop('disabled', false);
@@ -175,9 +212,30 @@ try {
         //left panel buttons
         $('.lpane').click(function(){
             $('#'+curr).toggle();
-            $('#b'+curr).css("background-color","grey");
+            if(arr[curr-1]!=1){
+                if(arr_ans[curr-1]==1){
+                    $('#b'+curr).css("background-color","green");
+                }else{
+                    $('#b'+curr).css("background-color","grey");
+                }
+            }
+            else{
+                $('#b'+curr).css("background-color","#ff8000");
+            }
             $('#'+$(this).val()).toggle();
-            $('#b'+$(this).val()).css("background-color","#008CBA");
+            if(arr[$(this).val()-1]!=1){
+                if(arr_ans[$(this).val()-1]!=1){
+                    $('#b'+$(this).val()).css("background-color","#008CBA");
+                }else{
+                    $('#b'+$(this).val()).css("background-color","#00FF00");
+                }
+                $("#mark").text("mark");
+                $("#mark").css("background-color","#FF8000");
+            }else{
+                $('#b'+$(this).val()).css("background-color","ffda00");
+                $("#mark").text("unmark");
+                $("#mark").css("background-color","#FF0000");
+            }
             curr=$(this).val();
             if(curr=='1'){
                $('#prev').prop('disabled', true);
@@ -192,6 +250,14 @@ try {
               $('#next').prop('disabled', false);
               $('#prev').prop('disabled', false);  
             }
+        });
+
+        // changing color of answer question
+        $('input').click(function(){
+            var str=$(this).attr('name');
+            arr_ans[parseInt(str[2])-1]=1;
+            if(arr[parseInt(str[2])-1]!=1)
+            $('#b'+str[2]).css("background-color","#00ff00");
         });
     });
 </script>
@@ -214,21 +280,32 @@ try {
     <div class='container'>
         <form name="ques" method="POST" action="eval.jsp">
               <% 
-              int i=1;
-              while(i<11){
-                    rs=st.executeQuery("select * from questions where qid="+mylist.get(i));
+                int i=1;
+                String sql=new String();
+                if(request.getParameter("tid").equals("t1")){
+                    sql="select * from questions where qid=";
+                }else if(request.getParameter("tid").equals("t2")){
+                    sql="select * from testtwo where qid=";
+                }
+                while(i<11){
+                    rs=st.executeQuery(sql+mylist.get(i));
                     rs.next();
+                    ArrayList<Integer>  options = new ArrayList<Integer>();
+                    for(int j=1;j<=4;j++){
+                        options.add(j);
+                    }
+                    Collections.shuffle(options);
                     out.print("<div class='qblock' id='"+i+"' style='display:none;'><table><tr><td>"+rs.getString("ques")+"</td></tr><tr class='blank_row'></tr>");
-                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='1'/>"+rs.getString("op1")+"</td></tr>");
-                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='2'/>"+rs.getString("op2")+"</td></tr>");
-                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='3'/>"+rs.getString("op3")+"</td></tr>");
-                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='4'/>"+rs.getString("op4")+"</td></tr>");
+                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='"+options.get(0)+"'/>"+rs.getString("op"+options.get(0))+"</td></tr>");
+                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='"+options.get(1)+"'/>"+rs.getString("op"+options.get(1))+"</td></tr>");
+                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='"+options.get(2)+"'/>"+rs.getString("op"+options.get(2))+"</td></tr>");
+                    out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='"+options.get(3)+"'/>"+rs.getString("op"+options.get(3))+"</td></tr>");
                     out.print("<input type='hidden' value='"+rs.getString("qid")+"' name='qid"+i+"'></table></div>");
                     i++;
-              }
-              %>  
-            <% } catch (SQLException e) {
-                e.printStackTrace();
+                }
+                %>  
+            <%  } catch (SQLException e) {
+                    e.printStackTrace();
             }
             %>
         </form>

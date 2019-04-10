@@ -1,4 +1,5 @@
 body{
+    background-color: #bbb;
     margin: 0;
     padding: 0;
 }
@@ -6,7 +7,7 @@ body{
     padding: 0.25%;
     vertical-align: middle;
     position: relative;
-    height: 6%;
+    height: 10%;
     width: 100%;
     background-color: #000;
 }
@@ -24,4 +25,74 @@ a{
 }
 .rest{
     background: #000;
+}
+.container {
+	background-color: #d6d6d6;
+	font-family: 'Roboto', sans-serif;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+    position: absolute;
+    height: 75%;
+    top: 15%;
+    width: 70%;
+    left: 15%;
+}
+#left{
+    background-color:black;
+    border-radius: 10px 0px 0px 10px;
+    float: left;
+    height: 100%;
+    width: 20%;
+}
+#tab{
+    margin: 6% 0% 0% 0%;
+    width: 100%;
+    height: 25%;
+    text-align: center;
+}
+button{
+    background-color: #eee;
+	display: inline-block;
+    border: none;
+    border-radius: 25rem;
+    padding: 0.9em 4em;
+    width: 75%;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+ul{
+    list-style: disc;
+    list-style-position: inside;
+}
+#welcome{
+    position: absolute;
+    left: 25%;
+    z-index: 1;
+}
+#tests{
+    position: absolute;
+    width: 75%;
+    left: 25%;
+    z-index: -1;
+}
+#scores{
+    left: 25%;
+    position: absolute;
+    z-index: -1;
+}
+#t1,#t2{
+    background-color: grey;
+    float: right;
+    line-height: 1.5em;
+    margin-right: 5%;
+    width: 20%;
+}
+#sub-container{
+    background-color: #eee;
+    padding-left: 5%;
+    line-height: 2.6em;
+    border: none;
+    border-radius: 20px;
+    width: 90%;
 }
