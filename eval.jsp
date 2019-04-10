@@ -44,6 +44,31 @@ try {
 <tr><th>UserName</th><th>No of Questions Attempted</th><th>No of correct</th></tr>
 <tr><td><%=session.getAttribute("uid")%></td><td><%out.print(no_ques);%></td><td><%out.print(correct);%></td></tr>
 </table>
+<%
+try{
+    Class.forName("org.mariadb.jdbc.Driver");
+    java.sql.Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/dxc","root","traceon");
+    Statement st=con.createStatement();
+    ResultSet rs=st.executeQuery("select * from users where uname='"+session.getAttribute("uid")+"' and password='"+session.getAttribute("pass")+"'");
+    rs.next();
+    Statement st1=con.createStatement();
+    PreparedStatement ps=con.prepareStatement("insert into score values(?,?,?,?)");
+    ps.setString(1,rs.getString("uname"));
+    ps.setInt(2,correct);
+    ps.setString(3,request.getParameter("tid"));
+    if(request.getParameter("tid").equals("t1")){
+        st1.executeUpdate("update users set att1='"+(rs.getInt("att1")+1)+"' where uname='"+session.getAttribute("uid")+"' and password='"+session.getAttribute("pass")+"'");
+        ps.setInt(4,rs.getInt("att1"));
+    }else if(request.getParameter("tid").equals("t2")){
+        st1.executeUpdate("update users set att2='"+(rs.getInt("att2")+1)+"' where uname='"+session.getAttribute("uid")+"' and password='"+session.getAttribute("pass")+"'");
+        ps.setInt(4,rs.getInt("att2"));
+    }
+    ps.executeUpdate();
+    
+}catch(SQLException e){
+    e.printStackTrace();
+}
+%>
 </div>
     </div>
     <div style="margin-top: 25px;" style="float: left;">

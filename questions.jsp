@@ -284,8 +284,10 @@ try {
                 String sql=new String();
                 if(request.getParameter("tid").equals("t1")){
                     sql="select * from questions where qid=";
+                    out.print("<input type='hidden' name='tid' value='t1'>");
                 }else if(request.getParameter("tid").equals("t2")){
                     sql="select * from testtwo where qid=";
+                     out.print("<input type='hidden' name='tid' value='t2'>");
                 }
                 while(i<11){
                     rs=st.executeQuery(sql+mylist.get(i));
