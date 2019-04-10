@@ -3,6 +3,7 @@
 <%@ page import ="java.io.*" %>
 <%@ page import ="java.util.*" %>
 <link rel="stylesheet" type="text/css" media="screen" href="eval.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <%
 //kicking out the user if has not logged in
 if(session.getAttribute("uid")==null){
@@ -13,6 +14,13 @@ response.setHeader("Cache-Control","no-store");
 response.setHeader("Pragma","no-cache");
 response.setDateHeader ("Expires", 0);
 %>
+<script>
+$(document).ready(function(){
+    $("#pcerf").click(function(){
+        window.open('certificate.jsp', '_blank');
+    });
+});
+</script>
 <%
 int no_ques=0,correct=0,i=0;
 try {
@@ -64,7 +72,6 @@ try{
         ps.setInt(4,rs.getInt("att2"));
     }
     ps.executeUpdate();
-    
 }catch(SQLException e){
     e.printStackTrace();
 }
@@ -78,5 +85,9 @@ try{
     <div style="margin-top: 20px;" style="float: right;">
         <button value="LogO" class="cl2" onclick="window.location.href = 'logout.jsp';">Log Out</button>
     </div> 
-
+    <%
+        if(correct>=7){
+            out.print("<button id='pcerf'  target='_blank'>Print Certificate</button>");
+        }
+    %>
 </body>
