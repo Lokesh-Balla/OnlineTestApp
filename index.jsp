@@ -11,7 +11,7 @@ if(session.getAttribute("uid")!=null){
     <title>Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css?v3">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -25,6 +25,10 @@ if(session.getAttribute("uid")!=null){
             });
             $("#hide_alert").click(function(){
                 $("#psudo-alert").fadeToggle("800");
+                $("#whiteb").fadeToggle("800");
+            });
+            $("#hide_alert_false").click(function(){
+                $("#psudo-alert-false").fadeToggle("800");
                 $("#whiteb").fadeToggle("800");
             });
         });
@@ -69,10 +73,22 @@ if(session.getAttribute("uid")!=null){
         <p>succesfully registered with online test you can now login with your credentials click ok to continue</p>
         <button class='button' id='hide_alert'>ok</button>
     </div>
+    <div id='psudo-alert-false'>
+        <h1>Sorry</h1>
+        <p>Given username and password already exists try new username or new password or both.</p>
+        <button class='button' id='hide_alert_false'>ok</button>
+    </div>
     <div id="whiteb"></div>
     <%
-    if(session.getAttribute("message")!=null){
+
+
+    if(session.getAttribute("message")=="true"){
         out.print("<script>$('#psudo-alert').toggle();</script>");
+        out.print("<script>$('#whiteb').toggle();</script>");
+        session.invalidate();
+    }
+    else if(session.getAttribute("message")=="false"){
+        out.print("<script>$('#psudo-alert-false').toggle();</script>");
         out.print("<script>$('#whiteb').toggle();</script>");
         session.invalidate();
     }

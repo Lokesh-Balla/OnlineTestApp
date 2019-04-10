@@ -13,25 +13,24 @@ try {
     String mail=request.getParameter("mail");
     String phn=request.getParameter("phn");
     Statement st=con.createStatement();
-    out.print("select * from  users where uname='"+uid+"' and password='"+pwd+"'");
-    ResultSet rs=st.executeQuery("select * from  users where uname='"+uid+"'");
-    rs.next();
-    out.print(rs.getString("uname"));
+    out.print("select * from  users where uname='"+uid+"'");
+    ResultSet rs=st.executeQuery("select * from  users where uname='"+uid+"' and password='"+pwd+"'");
     if(rs.next()){
-        session.setAttribute("message","<h1>Sorry</h1><p>Given username and password already exists try new username or new password or both.</p><button class='button'>ok</button>");
+        session.setAttribute("message","false");
         request.getRequestDispatcher("index.jsp").forward(request, response);  
+    }else{
+        PreparedStatement ps=con.prepareStatement("insert into users values(?,?,?,?,?,?)");
+        ps.setString(1, uid);
+        ps.setString(2, pwd);
+        ps.setString(3, mail);
+        ps.setString(4, phn);
+        ps.setInt(5,1);
+        ps.setInt(6,1);
+        ps.executeUpdate();
+        session.setAttribute("message","true");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
-    PreparedStatement ps=con.prepareStatement("insert into users values(?,?,?,?,?,?)");
-    
-    ps.setString(1, uid);
-    ps.setString(2, pwd);
-    ps.setString(3, mail);
-    ps.setString(4, phn);
-    ps.setInt(5,1);
-    ps.setInt(6,1);
-    ps.executeUpdate();
-    session.setAttribute("message","<h1>congrats</h1><p>succesfullly registered</p><button class='button'>ok</button>");
-    request.getRequestDispatcher("index.jsp").forward(request, response); 
+    //out.print("sfdsfd"); 
 } catch (SQLException e) {
     e.printStackTrace();
 }
