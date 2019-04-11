@@ -11,17 +11,17 @@ if(session.getAttribute("uid")!=null){
     <title>Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css?v3">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
             $("#sin").click(function(){
-                $("#sinup").fadeToggle("800");
-                $("#right-overlay").fadeToggle("800");
+                $("#sinin").fadeToggle("800");
+                $("#left-overlay").fadeToggle("800");
             });
             $("#sup").click(function(){
-                $("#sinup").fadeToggle("800");
-                $("#right-overlay").fadeToggle("800");
+                $("#sinin").fadeToggle("800");
+                $("#left-overlay").fadeToggle("800");
             });
             $("#hide_alert").click(function(){
                 $("#psudo-alert").fadeToggle("800");

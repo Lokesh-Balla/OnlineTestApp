@@ -255,9 +255,9 @@ try {
         // changing color of answer question
         $('input').click(function(){
             var str=$(this).attr('name');
-            arr_ans[parseInt(str[2])-1]=1;
-            if(arr[parseInt(str[2])-1]!=1)
-            $('#b'+str[2]).css("background-color","#00ff00");
+            arr_ans[parseInt(str.slice(2))-1]=1;
+            if(arr[parseInt(str.slice(2))-1]!=1)
+            $('#b'+str.slice(2)).css("background-color","#00ff00");
         });
     });
 </script>
