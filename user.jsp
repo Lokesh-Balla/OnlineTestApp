@@ -8,6 +8,7 @@
 if(session.getAttribute("uid")==null){
     response.sendRedirect("index.jsp");
 }
+session.setAttribute("test","true");
 response.setHeader("Cache-Control","no-cache");
 response.setHeader("Cache-Control","no-store");
 response.setHeader("Pragma","no-cache");

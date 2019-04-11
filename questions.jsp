@@ -7,6 +7,10 @@
 if(session.getAttribute("uid")==null){
     response.sendRedirect("index.jsp");
 }
+if(session.getAttribute("test")==null){
+    response.sendRedirect("user.jsp");
+}
+session.removeAttribute("test");
 response.setHeader("Cache-Control","no-cache");
 response.setHeader("Cache-Control","no-store");
 response.setHeader("Pragma","no-cache");
