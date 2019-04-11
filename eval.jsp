@@ -22,13 +22,13 @@ $(document).ready(function(){
 });
 </script>
 <%
-int no_ques=0,correct=0,i=0;
+int no_ques=0,correct=0,i=1;
 try {
     Class.forName("org.mariadb.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/dxc","root","traceon");
     Statement st=con.createStatement();
     ResultSet rs;
-    while(i<10)
+    while(i<=10)
     {
         if(request.getParameter("op"+i)!=null)
         {

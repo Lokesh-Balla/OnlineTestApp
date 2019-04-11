@@ -11,7 +11,7 @@ if(session.getAttribute("uid")!=null){
     <title>Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css?v4">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -29,6 +29,10 @@ if(session.getAttribute("uid")!=null){
             });
             $("#hide_alert_false").click(function(){
                 $("#psudo-alert-false").fadeToggle("800");
+                $("#whiteb").fadeToggle("800");
+            });
+            $("#hide_lvalid_false").click(function(){
+                $("#lvalid-false").fadeToggle("800");
                 $("#whiteb").fadeToggle("800");
             });
         });
@@ -71,26 +75,36 @@ if(session.getAttribute("uid")!=null){
     <div id='psudo-alert'>
         <h1>congrats</h1>
         <p>succesfully registered with online test you can now login with your credentials click ok to continue</p>
-        <button class='button' id='hide_alert'>ok</button>
+        <button class='button' id='hide_alert'>OK</button>
     </div>
     <div id='psudo-alert-false'>
         <h1>Sorry</h1>
         <p>Given username already exists try a new username.</p>
-        <button class='button' id='hide_alert_false'>ok</button>
+        <button class='button' id='hide_alert_false'>OK</button>
+    </div>
+    <div id='lvalid-false'>
+        <h1>Sorry</h1>
+        <p>Given username or password is incorrect please try again.</p>
+        <button class='button' id='hide_lvalid_false'>OK</button>
     </div>
     <div id="whiteb"></div>
     <%
-
-
-    if(session.getAttribute("message")=="true"){
+    if(session.getAttribute("message")!=null){
+        if(((String)session.getAttribute("message")).equals("lfail")){
+        out.print("<script>$('#lvalid-false').toggle();</script>");
+        out.print("<script>$('#whiteb').toggle();</script>");
+        session.setAttribute("message","none");
+    }
+    else if(((String)session.getAttribute("message")).equals("true")){
         out.print("<script>$('#psudo-alert').toggle();</script>");
         out.print("<script>$('#whiteb').toggle();</script>");
-        session.invalidate();
+        session.setAttribute("message","none");    
     }
-    else if(session.getAttribute("message")=="false"){
+    else if(((String)session.getAttribute("message")).equals("false")){
         out.print("<script>$('#psudo-alert-false').toggle();</script>");
         out.print("<script>$('#whiteb').toggle();</script>");
-        session.invalidate();
+        session.setAttribute("message","none");
+    }
     }
     %>
 </div>

@@ -27,7 +27,7 @@ try{
 <head>
     <meta charset="utf-8">
     <title>OnlineTestApp</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="umain.css?v21312">
+    <link rel="stylesheet" type="text/css" media="screen" href="umain.css?v34">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -86,7 +86,7 @@ try{
     </div>
     <div id="scores">
         <table id="stab">
-        <tr style="background-color:black;"><th id="tl">Test ID</th><th>Attempt Number</th><th id="tr">Score</th></tr>
+        <tr style="background-color:black;"><th>Test ID</th><th>Attempt Number</th><th>Score</th></tr>
         <%
         while(rs.next()){
             out.print("<tr><td>"+rs.getString("testid")+"</td><td>"+rs.getString("attnum")+"</td><td>"+rs.getString("score")+"</td></tr>");

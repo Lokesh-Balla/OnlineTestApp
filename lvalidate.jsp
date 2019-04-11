@@ -11,8 +11,8 @@ try{
         session.setAttribute("uid",rs.getString("uname"));
         response.sendRedirect("user.jsp");
     }else{
-        out.print("Incorrect login details!");
-        response.sendRedirect("index.jsps");
+        session.setAttribute("message","lfail");
+        request.getRequestDispatcher("index.jsp").forward(request, response); 
     }
 }catch(SQLException e){
     e.printStackTrace();

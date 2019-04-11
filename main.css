@@ -46,6 +46,7 @@ input{
 	min-height: 480px;
 }
 .sign-up{
+	background-color: #000;
     position: absolute; 
     height: 100%;
     left: 0%;
@@ -53,6 +54,7 @@ input{
 	z-index: 0;
 }
 .sign-in{
+	background-color: #000;
     position: absolute;
     height: 100%;
     left: 50%;
@@ -121,6 +123,23 @@ input{
   	top:25%;
 	z-index: 3;
 	display: none;
+}
+#lvalid-false{
+	justify-content: center;
+	align-items: center;
+	background: #000;
+	color: #FFF;
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+		  0 10px 10px rgba(0,0,0,0.22);
+  	position: absolute;
+  	overflow: hidden;
+	max-width: 50%;
+  	padding: 2.5em;
+  	top:25%;
+	z-index: 3;
+	display: none;	
 }
 #whiteb
 {
