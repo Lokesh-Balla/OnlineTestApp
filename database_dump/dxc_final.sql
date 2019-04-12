@@ -1,8 +1,8 @@
--- MySQL dump 10.17  Distrib 10.3.13-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.17  Distrib 10.3.14-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: dxc
 -- ------------------------------------------------------
--- Server version	10.3.13-MariaDB
+-- Server version	10.3.14-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,7 +54,8 @@ DROP TABLE IF EXISTS `score`;
 CREATE TABLE `score` (
   `uid` varchar(40) NOT NULL,
   `score` int(3) NOT NULL,
-  `testid` int(2) NOT NULL
+  `testid` varchar(50) NOT NULL,
+  `attnum` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -64,7 +65,37 @@ CREATE TABLE `score` (
 
 LOCK TABLES `score` WRITE;
 /*!40000 ALTER TABLE `score` DISABLE KEYS */;
+INSERT INTO `score` VALUES ('lokesh',0,'t1',1),('lokesh',0,'t2',1),('lokesh',6,'t1',2),('lokesh',9,'t1',3),('lokesh',9,'t1',4),('lokesh',9,'t1',5),('lokesh',9,'t1',6),('lokesh',9,'t1',7),('lokesh',8,'t1',8),('lokesh',8,'t1',9),('lokesh',8,'t1',10),('lokesh',8,'t1',11),('lokesh',8,'t1',12),('lokesh',8,'t1',13),('lokesh',0,'t1',14),('lokesh',1,'t1',15),('lokesh',0,'t1',16),('lokesh',0,'t1',17),('lokesh',1,'t1',18),('lokesh',9,'t1',19),('lokesh',10,'t1',20),('lokesh',1,'t1',21),('lokesh',0,'t1',22),('lokesh',0,'t1',23);
 /*!40000 ALTER TABLE `score` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `testtwo`
+--
+
+DROP TABLE IF EXISTS `testtwo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `testtwo` (
+  `qid` varchar(2) NOT NULL,
+  `ques` varchar(700) NOT NULL,
+  `op1` varchar(700) NOT NULL,
+  `op2` varchar(700) NOT NULL,
+  `op3` varchar(700) NOT NULL,
+  `op4` varchar(700) NOT NULL,
+  `ca` int(1) NOT NULL,
+  PRIMARY KEY (`qid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `testtwo`
+--
+
+LOCK TABLES `testtwo` WRITE;
+/*!40000 ALTER TABLE `testtwo` DISABLE KEYS */;
+INSERT INTO `testtwo` VALUES ('1','“By giving him the last ______ of the cake, you will ensure lasting _____ in our house',' peas, piece ','piece, peace','peace, piece','peace, peas',2),('10','In the summer, water consumption is known to',' The ratio of household to other consumption is \r\n8/17','The ratio of household to other consumption is \r\n1/17','The ratio of household to other consumption is \r\n17/8',' There are errors in the official’s statement',4),('11','I _____ made arrangements had I _____informed',' could have, been',' would have, being',' had, have',' had been, been',1),('12','She has a sharp tongue and it can occasionally turn','Hurtful ',' left','Methodical ',' vital\r',1),('13','Leila aspires to buy a car worth Rs. 10,00,000 after 5 years. What is the minimum amount','5,00,000 ','6,21,000','6,66,667 ','7,50,000',2),('14','If the number 715∎423 is divisible by 3 (∎ denotes the missing digit in the thousandths','0','2','5','6',2),('15','I _____ made arrangements had I _____informed',' could have, been',' would have, being',' had, have',' had been, been',1),('16','“By giving him the last ______ of the cake, you will ensure lasting _____ in our house',' peas, piece ','piece, peace','peace, piece','peace, peas',2),('17','A 1.5 m tall person is standing at a distance of 3 m from a lamp post. The light from the','1.5','3','4.5','6',2),('18','40% of deaths on city roads may be attributed to\r\ndrunken driving. The number of degree needed to\r\nrepresent this as a slice of a pie chart is\r','120','144','160','212',2),('2','“Even though there is a vast scope for its ________, tourism has remained a/an _________','improvement, neglected','rejection, approved','fame, glum','interest, disinterested',1),('3','If the number 715∎423 is divisible by 3 (∎ denotes the missing digit in the thousandths','0','2','5','6',2),('4','What is the value of 1 + 1/4 + 1/16 + 1/64 + 1/256+...?','2','7/4','3/2','4/3',4),('5','A 1.5 m tall person is standing at a distance of 3 m from a lamp post. The light from the','1.5','3','4.5','6',2),('6','Leila aspires to buy a car worth Rs. 10,00,000 after 5 years. What is the minimum amount','5,00,000 ','6,21,000','6,66,667 ','7,50,000',2),('7','Two alloys A and B contain gold and copper in the ratios of 2:3 and 3:7 by mass,','5:10','7:13','6:11','9:13',2),('8','She has a sharp tongue and it can occasionally turn','Hurtful ',' left','Methodical ',' vital\r',1),('9','40% of deaths on city roads may be attributed to\r\ndrunken driving. The number of degree needed to\r\nrepresent this as a slice of a pie chart is\r','120','144','160','212',2);
+/*!40000 ALTER TABLE `testtwo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -79,7 +110,8 @@ CREATE TABLE `users` (
   `password` varchar(30) NOT NULL,
   `email` varchar(45) NOT NULL,
   `mobile` varchar(10) NOT NULL,
-  `att` int(2) NOT NULL
+  `att1` int(2) NOT NULL,
+  `att2` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -89,7 +121,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('Lokesh','traceon','lokesh.balla123@gmail.com','9705561827',1),('manoj','m@ngas0ul','manojthestoic@gmail.com','6512345677',1),('he','sdfkjskdfjk','onethegreatone@gmail.com','9705561827',1),('sajdflkj','dsfsdfsdfdsf','onethegreatone@gmail.com','1234567890',1),('demo1','sdfsdfsdfs','onethegreatone@gmail.com','8301145672',1),('demo1','fsdsdfsafsd','manojthestoic@gmail.com','1234567890',1),('demo1','fsdsdfsafsd','manojthestoic@gmail.com','1234567890',1),('hello','sdfsdfsadf','onethegreatone@gmail.com','8301145672',1),('hello','sdfsdfsadf','onethegreatone@gmail.com','8301145672',1),('hello','sdfsdfsadf','onethegreatone@gmail.com','8301145672',1),('hello','sdfsdfsadf','onethegreatone@gmail.com','8301145672',1),('demo1','demo1sdfsd','manojthestoic@gmail.com','8301145672',1),('demo1','demo1sdfsd','manojthestoic@gmail.com','8301145672',1),('demo1','sdfsdfsaf','onethegreatone@gmail.com','9866148996',1);
+INSERT INTO `users` VALUES ('manoj','m@ngas0ul','manojthestoic@gmail.com','8143220399',1,1),('lokesh','traceon','lokesh.balla123@gmail.com','9705561827',24,2),('demo','sadfjsdfdsf','lokesh.balla123@gmail.com','3456546461',1,1),('hello','ksdjfksjdfkj','manojthestoic@gmail.com','9866148996',1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -102,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-07 13:02:54
+-- Dump completed on 2019-04-12  9:14:38
