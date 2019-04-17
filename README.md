@@ -1,7 +1,17 @@
 # OnlineTestApp
 
 TODO List
- - **ALL DONE**
+ - ~~**ALL DONE**~~
+ - forgot password
+ - catogerised result
+ - saving feature
+ - auto save
+ - change certificate
+ - catogerise questions based on difficulty
+ - banner and name where ever possible
+ - different versions of the questions page
+ - change backgrounds
+ - fonts for omega and theta
 
  
  Things already implemented
