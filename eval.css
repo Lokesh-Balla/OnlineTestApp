@@ -9,6 +9,7 @@ body {
   background:url(https://backgroundcheckall.com/wp-content/uploads/2017/12/technical-background-images-for-websites-3.jpg);
   background-repeat:no repeat;
   background-size:100% 100%;
+  overflow: hidden;
 }
 
 .container {

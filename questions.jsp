@@ -34,6 +34,9 @@ try {
     Statement st=con.createStatement();
     ResultSet rs;
 %>
+<head>
+<meta charset="utf-8">
+</head>
 <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="screen" href="qmain.css?v2">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

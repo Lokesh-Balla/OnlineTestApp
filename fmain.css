@@ -5,9 +5,6 @@ h3{
     color: #FFF;
     font-size: 2.5em;
 }
-a{
-	color: white;
-}
 .button{
 	background-color: #d6d6d6;
 	display: inline-block;
@@ -18,7 +15,7 @@ a{
 	font-weight: bold;
 }
 form {
-    position: absolute;
+    /* position: absolute; */
 	background-color: #000;
 	display: flex;
 	align-items: center;
@@ -34,7 +31,7 @@ input{
     border-radius: 25rem;
 	padding: 12px 15px;
 	margin: 8px 0;
-	width: 100%;
+	width: 70%;
 }
 .container {
 	background-color: #fff;
@@ -44,53 +41,56 @@ input{
 			0 10px 10px rgba(0,0,0,0.22);
 	position: absolute;
 	overflow: hidden;	
-	width: 768px;
+	width: 55%;
 	max-width: 100%;
 	min-height: 480px;
 }
-.sign-up{
+.forgot{
 	background-color: #000;
     position: absolute; 
     height: 100%;
     left: 0%;
-	width: 50%;
-	z-index: 0;
+	width: 100%;
+	z-index: 1;	
 }
-.sign-in{
+/* #congo{
 	background-color: #000;
-    position: absolute;
-    height: 100%;
-    left: 50%;
-	width: 50%;
-	z-index: 1;
-}
-#left-overlay{
-	background-color: #fff;
-    z-index: 1;
-    color: #000;
-    position: absolute;
-    display: flex;
-	align-items: center;
-	justify-content: center;
-    flex-direction: column;
+    position: absolute; 
     height: 100%;
     left: 0%;
-    max-width: 50%;
-	text-align: center;
+	width: 100%;
+	z-index: 1;
 }
-#right-overlay{
-	background-color: #fff;
-    z-index: 0;
-    color: #000;
-    position: absolute;
-    display: flex;
-	align-items: center;
-	justify-content: center;
-    flex-direction: column;
+#passnomatch{
+	background-color: #000;
+    position: absolute; 
     height: 100%;
-    left: 50%;
-    max-width: 50%;	
-	text-align: center;
+    left: 0%;
+	width: 100%;
+	z-index: 1;
+}  */
+#particles-js{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #4b4b4b;
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	background-repeat: no-repeat center center;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+}
+#overlay{
+	background-color: #000;
+    position: absolute; 
+    height: 100%;
+    left: 0%;
+	width: 100%;
+	z-index: 0;
 }
 #psudo-alert
 {
@@ -110,7 +110,8 @@ input{
 	z-index: 3;
 	display: none;
 }
-#psudo-alert-false{
+#passnomatch
+{
 	justify-content: center;
 	align-items: center;
 	background: #000;
@@ -127,7 +128,8 @@ input{
 	z-index: 3;
 	display: none;
 }
-#lvalid-false{
+#congo
+{
 	justify-content: center;
 	align-items: center;
 	background: #000;
@@ -142,7 +144,7 @@ input{
   	padding: 2.5em;
   	top:25%;
 	z-index: 3;
-	display: none;	
+	display: none;
 }
 #whiteb
 {
@@ -158,21 +160,3 @@ input{
 	background-color: #FFF;
 	opacity: 0.7;
 }
-
-#particles-js{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	background-color: #4b4b4b;
-	min-height: 100%;
-	min-width: 1024px;
-	width: 100%;
-	height: auto;
-	background-repeat: no-repeat center center;
-	position: fixed;
-	top: 0%;
-	left: 0%;
-}
-  
-	

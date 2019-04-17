@@ -11,7 +11,7 @@ if(session.getAttribute("uid")!=null){
     <title>Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css?v4">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css?v3434">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -59,6 +59,7 @@ if(session.getAttribute("uid")!=null){
                 <input type="text" name="uid" required maxlength="30" placeholder="Username"/>
                 <input type="password" required name="pwd" minlength="6" maxlength="30" placeholder="Password"/>
                 <input type="submit" value="Sign In"/>
+                <a href="forgot.jsp">forgot password?</a>
             </form> 
         </div>
         <div id="left-overlay" class="hidden">

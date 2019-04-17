@@ -2,7 +2,7 @@
 <%@ page import ="javax.sql.*" %>
 <%@ page import ="java.io.*" %>
 <%@ page import ="java.util.*" %>
-<link rel="stylesheet" type="text/css" media="screen" href="eval.css">
+<link rel="stylesheet" type="text/css" media="screen" href="eval.css?v12">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <%
 //kicking out the user if has not logged in
