@@ -3,7 +3,7 @@
 TODO List
  - ~~**ALL DONE**~~
  - ~~forgot password~~
- - catogerised result
+ - ~~catogerised result~~
  - saving feature
  - auto save
  - change certificate
