@@ -2,7 +2,7 @@
 
 TODO List
  - ~~**ALL DONE**~~
- - forgot password
+ - ~~forgot password~~
  - catogerised result
  - saving feature
  - auto save
