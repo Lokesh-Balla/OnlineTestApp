@@ -28,12 +28,19 @@ try {
     java.sql.Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/dxc","root","traceon");
     Statement st=con.createStatement();
     ResultSet rs;
+    String sql;
+    if(request.getParameter("tid").equals("t1"))
+    {
+        sql="select ca from questions where qid=";
+    }else{
+        sql="select ca from testtwo where qid=";
+    }
     while(i<=10)
     {
         if(request.getParameter("op"+i)!=null)
         {
             no_ques++;
-            rs=st.executeQuery("select ca from questions where qid="+request.getParameter("qid"+i));
+            rs=st.executeQuery(sql+request.getParameter("qid"+i));
             rs.next();
             if(request.getParameter("op"+i).equals(rs.getString("ca")))
             {
