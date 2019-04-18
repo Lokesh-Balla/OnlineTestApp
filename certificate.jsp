@@ -12,7 +12,13 @@ $(document).ready(function(){
         window.print();
     });
 });
-
+<%
+  if(session.getAttribute("cert")==null)
+  {
+    response.sendRedirect("user.jsp");
+  }
+  session.removeAttribute("cert");
+%>
 </script>
 <style>
     body, html {

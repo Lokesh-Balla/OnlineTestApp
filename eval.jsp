@@ -94,6 +94,7 @@ try{
     </div> 
     <%
         if(correct>=7){
+            session.setAttribute("cert","pass");
             out.print("<button id='pcerf'  target='_blank'>Print Certificate</button>");
         }
     %>
