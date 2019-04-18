@@ -271,7 +271,7 @@ try {
 </script>
 <body>
     <div class='nav'>
-        <span>Timer : </span><span id="time">00:00</span>
+        <span style='left:0%'><i class="fa fa-user-circle-o" aria-hidden="true"></i> <%=session.getAttribute("uid")%></span><span>Time : </span><span id="time">00:00</span>
     </div>
     <div class='left'>
         <button class="lpane" id="b1" value='1'>1</button>
