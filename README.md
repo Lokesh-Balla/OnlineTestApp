@@ -11,7 +11,7 @@ TODO List
  - banner and name where ever possible
  - different versions of the questions page
  - change backgrounds
- - fonts for omega and theta
+ - ~~fonts for omega and theta~~
 
  
  Things already implemented
