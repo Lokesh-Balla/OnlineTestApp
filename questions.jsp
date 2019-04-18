@@ -2,6 +2,7 @@
 <%@ page import ="javax.sql.*" %>
 <%@ page import ="java.io.*" %>
 <%@ page import ="java.util.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 //kicking out the user if has not logged in
 if(session.getAttribute("uid")==null){
