@@ -39,8 +39,9 @@ try {
 <meta charset="utf-8">
 </head>
 <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen" href="qmain.css?v2">
+<link rel="stylesheet" type="text/css" media="screen" href="qmain.css?v22">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script >
@@ -61,6 +62,7 @@ try {
     function startTimer(duration, display) {
         var start = Date.now(),
         diff,
+        flag=0,
         minutes,
         seconds;
         function timer() {
@@ -76,6 +78,17 @@ try {
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
             display.textContent = minutes + ":" + seconds; 
+
+            if(diff<2*60 && flag!=1)
+            {
+                $.alert({
+                useBootstrap: false,
+                title: 'Hurry Up!',
+                content: 'Only 2 minutes left.',
+                });
+                $('#time').css("color","red");
+                flag=1;
+            }
 
             if (diff <= 0) {
             // add one second so that the count down starts at the full duration
@@ -305,7 +318,7 @@ try {
                         options.add(j);
                     }
                     Collections.shuffle(options);
-                    out.print("<div class='qblock' id='"+i+"' style='display:none;'><table><tr><td>"+rs.getString("ques")+"</td></tr><tr class='blank_row'></tr>");
+                    out.print("<div class='qblock' id='"+i+"' style='display:none;'><table><tr><td>"+i+") "+rs.getString("ques")+"</td></tr><tr class='blank_row'></tr>");
                     out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='"+options.get(0)+"'/>"+rs.getString("op"+options.get(0))+"</td></tr>");
                     out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='"+options.get(1)+"'/>"+rs.getString("op"+options.get(1))+"</td></tr>");
                     out.print("<tr class='shuff'><td><input type='radio' name='op"+i+"' value='"+options.get(2)+"'/>"+rs.getString("op"+options.get(2))+"</td></tr>");
