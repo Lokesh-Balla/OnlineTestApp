@@ -297,6 +297,15 @@ try {
         <button class="lpane" id="b8" value='8'>8</button>
         <button class="lpane" id="b9" value='9'>9</button>
         <button class="lpane" id="b10" value='10'>10</button>
+        <div id="legend" style='position:absolute;bottom:25'>
+            <ul class='legend-labels' type='none' style='padding:0'>
+                <li><span style='background: grey;'></span>unanswered</li>
+                <li><span style='background: #00FF00;'></span>answered</li>
+                <li><span style='background: #FF8000;'></span>marked</li>
+                <li><span style='background: #FFDA00;'></span>marked selected</li>
+                <li><span style='background: #008CBA;'></span>selected</li>
+            </ul>
+        </div>
     </div>
     <div class='container'>
         <form name="ques" method="POST" action="eval.jsp">
