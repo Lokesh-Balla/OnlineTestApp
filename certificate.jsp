@@ -9,7 +9,9 @@
 <script>
 $(document).ready(function(){
     $('#cmd').click(function(){
+        $('#cmd').hide();
         window.print();
+        $('#cmd').show();
     });
 });
 <%
