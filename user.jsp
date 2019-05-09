@@ -118,7 +118,7 @@ try{
         <div id="te1">
             <span style="position:relative;left:5%">Test 1</span>
             <span style="position:relative;left:15%">No of tests Passed <button id="view1_1" style="width:15%;left:2%;position:relative;">view</button></span>
-            <span style="position:relative;left:20%">all charts <button id="view1_2" style="width:15%;left:2%;position:relative;">view</button></span>
+            <span style="position:relative;left:20%">All Tests <button id="view1_2" style="width:15%;left:2%;position:relative;">view</button></span>
         </div>
         <div id="hidden1_1">
         <%
@@ -222,7 +222,7 @@ int ze=0,on=0,tw=0,th=0,fo=0,fi=0,si=0,se=0,ei=0,ni=0,te=0;
  <div id="te2">
             <span style="position:relative;left:5%">Test 2</span>
             <span style="position:relative;left:15%">No of tests Passed <button id="view2_1" style="width:15%;left:2%;position:relative;">view</button></span>
-            <span style="position:relative;left:20%">all charts <button id="view2_2" style="width:15%;left:2%;position:relative;">view</button></span>
+            <span style="position:relative;left:20%">All Tests <button id="view2_2" style="width:15%;left:2%;position:relative;">view</button></span>
         </div>
 
 <div id="hidden2_1">
