@@ -80,7 +80,7 @@ if(session.getAttribute("uid")!=null){
     </div>
     <div id='psudo-alert-false'>
         <h1>Sorry</h1>
-        <p>Given username already exists try a new username.</p>
+        <p>Given username or email already exists try again.</p>
         <button class='button' id='hide_alert_false'>OK</button>
     </div>
     <div id='lvalid-false'>

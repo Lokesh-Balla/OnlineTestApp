@@ -14,7 +14,7 @@ try {
     String phn=request.getParameter("phn");
     Statement st=con.createStatement();
     out.print("select * from  users where uname='"+uid+"'");
-    ResultSet rs=st.executeQuery("select * from  users where uname='"+uid+"'");
+    ResultSet rs=st.executeQuery("select * from  users where uname='"+uid+"' or email='"+mail+"'");
     if(rs.next()){
         session.setAttribute("message","false");
         request.getRequestDispatcher("index.jsp").forward(request, response);  
