@@ -51,14 +51,19 @@ try {
     var curr = '1';
     function submit()
     {
-        $.alert({
-            useBootstrap: false,
-            title: 'Time Up',
-            content: 'Your answers will be auto-submitted',
-        });
-        document.forms["ques"].submit();
+        $.confirm({
+                title: 'Time Up',
+                content: 'Your answers will be auto-submitted',
+                useBootstrap: false,
+                buttons: {
+                    ok: function () {
+                        document.forms["ques"].submit();
+                    },
+                }
+            });
+        
     }
-    setTimeout(submit,1000*60*60+1000);
+    
     function startTimer(duration, display) {
         var start = Date.now(),
         diff,
@@ -84,10 +89,14 @@ try {
                 $.alert({
                 useBootstrap: false,
                 title: 'Hurry Up!',
-                content: 'Only 2 minutes left.',
+                content: 'Less than 2 minutes left.',
                 });
                 $('#time').css("color","red");
                 flag=1;
+            }
+            if(flag==1 && diff==0)
+            {
+                submit();
             }
 
             if (diff <= 0) {
@@ -101,7 +110,8 @@ try {
     setInterval(timer, 1000);
     }
     $(window).on('load', function () {
-        var Minutes = 60 * 60,
+        //set timer here
+        var Minutes = 0.5 * 60,
         display = document.querySelector('#time');
         $("#1").toggle();
         $('#prev').prop('disabled', true);
